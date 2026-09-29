@@ -12,9 +12,9 @@ import Layout from '../layouts/root_pages.astro';
 
 <Layout>
     <slot name="head" />
-    <Header active={active}/>
-        <div id="main">
+    <Header active={active} transition:animate="none"/>
+        <div id="main" transition:animate="fade">
             <slot />
         </div>
-    <Footer />
+    <Footer transition:animate="none"/>
 </Layout>

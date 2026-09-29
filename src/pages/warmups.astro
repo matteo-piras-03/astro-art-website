@@ -1,7 +1,17 @@
 ---
+import Seo from '../components/Seo.astro';
 import Layout from '../layouts/main_pages.astro';
+const MEDIA_SUBDOMAIN = import.meta.env.PUBLIC_MEDIA_DOMAIN;
+const DOMAIN = import.meta.env.SITE;
 ---
 
+<Seo slot="head" 
+	url={DOMAIN + Astro.url.pathname}
+	pagetitle="Warmups - pirAs03"
+	title="pirAs03 - Warmups"
+	description="A simple warmup drawing exercises generator complete with timer, instructions and score system, fully customizable by the user."
+	image={MEDIA_SUBDOMAIN + "/image/asset/previews/warmups.jpg"}
+/>
 <Layout active="warmups">
 	<h1>Warmups</h1>
 </Layout>

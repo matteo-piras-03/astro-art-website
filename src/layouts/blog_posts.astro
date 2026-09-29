@@ -38,7 +38,7 @@ const DOMAIN = import.meta.env.SITE;
     <Header active="blog"/>
         <div id="main">
             <div id="section-0">
-                <a href="/blog" id="back-button">
+                <a href="/blog" id="back-button" data-astro-prefetch>
                     <img src={leftChevron} alt="Back"/> <span>Back to Blog</span>
                 </a>
                 <h1 class="title">{title || "Unset Title"}</h1>

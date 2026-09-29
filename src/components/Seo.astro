@@ -8,6 +8,7 @@ interface Props{
 }
 
 const { pagetitle, title, description, url, image } = Astro.props as Props;
+import { ClientRouter } from "astro:transitions";
 ---
 
 <title>{pagetitle}</title>
@@ -91,4 +92,4 @@ const { pagetitle, title, description, url, image } = Astro.props as Props;
         content={image}
     />
 )}
-</Helmet>
+<ClientRouter />

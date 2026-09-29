@@ -17,7 +17,7 @@ const formattedDate = date && !Number.isNaN(date.valueOf()) ? date.toLocaleDateS
 ---
 
 <li>
-    <a href={`/blog/${id}`}>
+    <a href={`/blog/${id}`} aria-label={`Read ${title} blog post`} data-astro-prefetch>
         <div class="top">
             <h1 class="title">{title}</h1>
             <time class="date">{formattedDate}</time>

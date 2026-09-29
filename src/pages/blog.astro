@@ -14,7 +14,7 @@ const DOMAIN = import.meta.env.SITE;
 ---
 
 <Seo slot="head" 
-	url={DOMAIN + "/blog"}
+	url={DOMAIN + Astro.url.pathname}
 	pagetitle="Blog - pirAs03"
 	title="pirAs03 - Blog"
 	description="A place where I write about my drawing career and the development of this website, and can yap without being judged."

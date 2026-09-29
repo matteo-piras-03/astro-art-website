@@ -13,18 +13,18 @@ const { active } = Astro.props as Props;
 <header id="nav">
     <div id="nav-container">
         <div id="nav_left">
-            <a href="/" class={(pathname === '/') || (active === 'index') ? "active" : ""} aria-current={pathname === '/' ? "page" : undefined}>
+            <a href="/" class={(pathname === '/') || (active === 'index') ? "active" : ""} aria-current={pathname === '/' ? "page" : undefined} data-astro-prefetch>
                 pirAs03
             </a>
         </div>
         <div id="nav_right">
-            <a href="/art" class={(pathname === '/art') || (active === 'art') ? "active" : ""} aria-current={pathname === '/art' ? "page" : undefined}>
+            <a href="/art" class={(pathname === '/art') || (active === 'art') ? "active" : ""} aria-current={pathname === '/art' ? "page" : undefined} data-astro-prefetch>
                 Art
             </a>
-            <a href="/blog" class={(pathname === '/blog') || (active === 'blog') ? "active" : ""} aria-current={pathname === '/blog' ? "page" : undefined}>
+            <a href="/blog" class={(pathname === '/blog') || (active === 'blog') ? "active" : ""} aria-current={pathname === '/blog' ? "page" : undefined} data-astro-prefetch>
                 Blog
             </a>
-            <a href="/warmups" class={(pathname === '/warmups') || (active === 'warmups') ? "active" : ""} aria-current={pathname === '/warmups' ? "page" : undefined}>
+            <a href="/warmups" class={(pathname === '/warmups') || (active === 'warmups') ? "active" : ""} aria-current={pathname === '/warmups' ? "page" : undefined} data-astro-prefetch>
                 Warmups
             </a>
             <Dark_mode_button client:load/>
@@ -33,12 +33,16 @@ const { active } = Astro.props as Props;
 </header>
 <script is:inline>
     try {
-        const savedTheme = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const theme = savedTheme === "dark" || savedTheme === "light"
-            ? savedTheme
-            : prefersDark ? "dark" : "light";
-        document.documentElement.setAttribute("data-theme", theme);
+        function applyTheme(){
+            const savedTheme = localStorage.getItem("theme");
+            const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            const theme = savedTheme === "dark" || savedTheme === "light"
+                ? savedTheme
+                : prefersDark ? "dark" : "light";
+            document.documentElement.setAttribute("data-theme", theme);
+        }
+        document.addEventListener("astro:after-swap", applyTheme);
+        applyTheme();
     } catch {
         document.documentElement.setAttribute("data-theme", "dark");
     }
