@@ -1,11 +1,45 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Seo from '../components/Seo.astro';
+import Layout from '../layouts/main_pages.astro';
+import { Socials, InlineSVG } from '../components/Socials.jsx';
+import Featured_Gallery from '../components/Featured_Gallery.jsx';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import '../styles/index.scss';
+const MEDIA_SUBDOMAIN = import.meta.env.PUBLIC_MEDIA_DOMAIN;
+const DOMAIN = import.meta.env.SITE;
+
 ---
 
+<Seo slot="head" 
+				url={DOMAIN}
+				pagetitle="Home - pirAs03"
+                title="pirAs03 - Home"
+                description="Hello! My name is Matteo Piras, I'm a 23 years old artist from Italy. I'm currently an electronics engineer student, but as a hobby I started drawing seriously on late 2025.
+                Currently a Drawabox student and nothing else, so everything you see here was born by trial and error. I also like cooking and videogames!"
+                image={MEDIA_SUBDOMAIN + "/image/asset/previews/home.jpg"}
+/>
 <Layout>
-	<Welcome />
+	<div id="section-0">
+		<div id="section-0-left">
+			<img src={MEDIA_SUBDOMAIN + "/image/asset/hrnt_pfp.jpg"} id="logo" alt="HRNT - 47c"/>
+			<div id="name-gender">
+				<h1 class="name">pirAs03</h1>
+				<h2 class="gender">he/him</h2>
+			</div>
+			<p>Hello! My name is Matteo Piras, I'm a 23 years old artist from Italy. I'm currently an electronics engineering student, but as a hobby I started drawing seriously on late 2025.
+			Currently a <a href="https://drawabox.com" target="_blank">Drawabox</a> student and nothing else, so everything you see here was born by trial and error. I also like cooking and videogames!</p>
+		</div>
+		<div id="section-0-right">
+				<h1>No commissions! (yet...)</h1>
+				<div class="gray-line"></div>
+				<h1 class="socials">Art Socials</h1>
+				<Socials/>
+			</div>
+	</div>
+	<div class="gray-line"></div>
+	<div id="section-1">
+		<h1>Featured Art</h1>
+		<Featured_Gallery client:visible/>
+	</div>
 </Layout>
+<InlineSVG/ >

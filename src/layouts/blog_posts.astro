@@ -1,0 +1,53 @@
+---
+interface Frontmatter {
+    title?: string;
+    description?: string;
+    pubDate?: string;
+}
+
+interface Props {
+    frontmatter: Frontmatter;
+}
+
+const { title, description, pubDate } = (Astro.props as Props).frontmatter;
+const date = pubDate ? new Date(pubDate) : undefined;
+const formattedDate = date && !Number.isNaN(date.valueOf()) ? date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+}) : undefined;
+
+import Seo from '../components/Seo.astro'
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Layout from '../layouts/root_pages.astro';
+import "../styles/blogpost.scss";
+
+import leftChevron from "../assets/svg/chevron-left-svgrepo-com.svg?url";
+
+const DOMAIN = import.meta.env.SITE;
+---
+<Seo slot="head" 
+	url={DOMAIN + Astro.url.pathname}
+	pagetitle={title ? `${title} - pirAs03` : "Blog - pirAs03"}
+	title={title ? `${title} - pirAs03` : "pirAs03 - Blog"}
+	description={description ? description : "A place where I write about my drawing career and the development of this website, and can yap without being judged."}
+/>
+<Layout>
+    <Header active="blog"/>
+        <div id="main">
+            <div id="section-0">
+                <a href="/blog" id="back-button">
+                    <img src={leftChevron} alt="Back"/> <span>Back to Blog</span>
+                </a>
+                <h1 class="title">{title || "Unset Title"}</h1>
+                <h2 class="date">{formattedDate || "Unset Date"}</h2>
+                <span class="description">{description || "Unset Description"}</span>
+            </div>
+            <div id="section-1">
+                <slot />
+            </div>
+        </div>
+    <Footer />
+</Layout>

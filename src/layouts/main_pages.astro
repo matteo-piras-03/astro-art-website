@@ -1,0 +1,20 @@
+---
+interface Props {
+    active?: string;
+}
+
+const { active } = Astro.props as Props;
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Layout from '../layouts/root_pages.astro';
+---
+
+<Layout>
+    <slot name="head" />
+    <Header active={active}/>
+        <div id="main">
+            <slot />
+        </div>
+    <Footer />
+</Layout>

@@ -1,0 +1,51 @@
+:root{
+    --dark-mode-percentage: 100%;
+}
+
+button{
+    border: none;
+    border-radius: 25%;
+    background-color: var(--a-background-color);
+    padding: 0px;
+    margin: 0px 10px;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover{
+        background-color: var(--primary-color);
+        transition: background-color 0.3s ease;
+        --dark-mode-percentage: 0%;
+    }
+
+    img{
+        width: 1.5rem;
+        height: 1.5rem;
+        display: block;
+        margin: auto;
+        transition: filter 0.3s ease;
+
+        &.hidden{
+            display: none;
+        }
+    }
+
+    #dark{
+        filter: invert(var(--dark-mode-percentage));
+    }
+
+    #light{
+        filter: invert(calc(100% - var(--dark-mode-percentage)));
+    }
+}
+
+[data-theme="dark"] #toggledarkmode #dark,
+[data-theme="light"] #toggledarkmode #light{
+    display: block;
+}
+
+[data-theme="dark"] #toggledarkmode #light,
+[data-theme="light"] #toggledarkmode #dark{
+    display: none;
+}

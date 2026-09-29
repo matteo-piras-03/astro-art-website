@@ -1,0 +1,45 @@
+---
+interface Props{
+    active?: string;
+}
+
+import "../styles/header.scss";
+import Dark_mode_button from "./Dark_mode_button.jsx";
+
+const { pathname } = Astro.url;
+const { active } = Astro.props as Props;
+---
+
+<header id="nav">
+    <div id="nav-container">
+        <div id="nav_left">
+            <a href="/" class={(pathname === '/') || (active === 'index') ? "active" : ""} aria-current={pathname === '/' ? "page" : undefined}>
+                pirAs03
+            </a>
+        </div>
+        <div id="nav_right">
+            <a href="/art" class={(pathname === '/art') || (active === 'art') ? "active" : ""} aria-current={pathname === '/art' ? "page" : undefined}>
+                Art
+            </a>
+            <a href="/blog" class={(pathname === '/blog') || (active === 'blog') ? "active" : ""} aria-current={pathname === '/blog' ? "page" : undefined}>
+                Blog
+            </a>
+            <a href="/warmups" class={(pathname === '/warmups') || (active === 'warmups') ? "active" : ""} aria-current={pathname === '/warmups' ? "page" : undefined}>
+                Warmups
+            </a>
+            <Dark_mode_button client:load/>
+        </div>
+    </div>
+</header>
+<script is:inline>
+    try {
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = savedTheme === "dark" || savedTheme === "light"
+            ? savedTheme
+            : prefersDark ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+    } catch {
+        document.documentElement.setAttribute("data-theme", "dark");
+    }
+</script>

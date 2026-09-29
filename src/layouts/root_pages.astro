@@ -1,0 +1,39 @@
+---
+import '../styles/root.scss';
+import { Font } from "astro:assets";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<Font cssVariable={"--font-primary" as any} preload/>
+		<Font cssVariable={"--font-mono" as any} />
+		<Font cssVariable={"--font-header" as any} preload/>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="48x48" href="/icons/favicon-48x48.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+		<link rel="manifest" href="/icons/site.webmanifest">
+		<slot name="head">
+			<title>pirAs03</title>
+		</slot>
+	</head>
+	<body>
+		<div id="root">
+			<slot />
+		</div>
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>

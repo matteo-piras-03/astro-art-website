@@ -1,0 +1,32 @@
+---
+import Seo from '../components/Seo.astro'
+import Layout from '../layouts/main_pages.astro';
+import BlogPost from '../components/BlogPostLi.astro';
+import "../styles/blog.scss";
+const allPosts = Object.entries(import.meta.glob('./blog/*.md', { eager: true, import: 'frontmatter' }))
+	.map(([path, frontmatter]) => ({
+		...(frontmatter as any),
+		id: path.replace('./blog/', '').replace(/\.md$/, ''),
+	}));
+
+const MEDIA_SUBDOMAIN = import.meta.env.PUBLIC_MEDIA_DOMAIN;
+const DOMAIN = import.meta.env.SITE;
+---
+
+<Seo slot="head" 
+	url={DOMAIN + "/blog"}
+	pagetitle="Blog - pirAs03"
+	title="pirAs03 - Blog"
+	description="A place where I write about my drawing career and the development of this website, and can yap without being judged."
+	image={MEDIA_SUBDOMAIN + "/image/asset/previews/blog.jpg"}
+/>
+<Layout active="blog">
+	<h1 class="titlepage">Blog</h1>
+	<ul id="content">
+		{allPosts.sort((a, b) => {
+			const dateA = new Date(a.pubDate);
+			const dateB = new Date(b.pubDate);
+			return dateB.getTime() - dateA.getTime();
+		}).map((post: any) => <BlogPost id={post.id} title={post.title} description={post.description} pubDate={post.pubDate}/>)}
+	</ul>
+</Layout>
