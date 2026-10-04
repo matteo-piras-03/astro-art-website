@@ -3,9 +3,12 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 import react from '@astrojs/react';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [react()],
+
   fonts: [
   {
     provider: fontProviders.local(),
@@ -44,8 +47,12 @@ export default defineConfig({
     },
   }
   ],
+
   site: "https://piras03.com",
+
   prefetch: {
     prefetchAll: false
-  }
+  },
+
+  adapter: cloudflare()
 });
