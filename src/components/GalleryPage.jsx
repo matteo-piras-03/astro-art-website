@@ -5,6 +5,7 @@ import { navigate } from "astro:transitions/client";
 import { createPortal } from "react-dom";
 import leftChevron from "../assets/svg/chevron-left-svgrepo-com.svg?url";
 import rightChevron from "../assets/svg/chevron-right-svgrepo-com.svg?url";
+import cross from "../assets/svg/cross-svgrepo-com.svg?url";
 
 const MEDIA_SUBDOMAIN = import.meta.env.PUBLIC_MEDIA_DOMAIN;
 const DOMAIN = import.meta.env.SITE;
@@ -302,19 +303,24 @@ function CollectionModal({ modalInfo, setModal }) {
         <>
             <div id={styles["modal-view"]} className={modalInfo.visible ? styles["visible"] : styles["hidden"]} onClick={(event) => { if (event.target.id === styles["modal-view"]) { handleModalClose(); } }}>
                 <div id={styles["modal-view-sub"]}>
-                    <div className={styles["title-date"]}>
+                    <div className={styles["title-exit"]}>
                         <h1>{collection.title}</h1>
+                        <button type="button" className={styles["exit-button"]} aria-label="Close modal" onClick={handleModalClose}>
+                            <img src={cross} alt="Close"/>
+                        </button>
+                    </div>
+                    <div className={styles["date-tags"]}>
                         <time className={styles["date"]} dateTime={collection.date}>
                             {new Date(collection.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
                         </time>
-                    </div>
-                    <div className={styles["medium-tags"]}>
-                        {collection.mediums.map((medium, index) => (
-                            <span key={index}>{medium}</span>
-                        ))}
-                        {collection.tags.map((tag, index) => (
-                            <span key={index}>{tag}</span>
-                        ))}
+                        <div className={styles["medium-tags"]}>
+                            {collection.mediums.map((medium, index) => (
+                                <span key={index}>{medium}</span>
+                            ))}
+                            {collection.tags.map((tag, index) => (
+                                <span key={index}>{tag}</span>
+                            ))}
+                        </div>
                     </div>
                     <CollectionCarousel collection={collection} visible={modalInfo.visible} styles={styles} />
                 </div>

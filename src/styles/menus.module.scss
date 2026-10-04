@@ -59,6 +59,9 @@
         .menu{
             position: absolute;
             display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease, display 0.3s ease allow-discrete, transform 0.3s ease-in-out;
+            transform: translate(0%, -5%);
             top: 100%;
             left: 0px;
             padding: 0px;
@@ -71,7 +74,13 @@
             width: 100%;
 
             &.open{
+                transform: translate(0%, 0%);
                 display: block;
+                opacity: 1;
+                @starting-style{
+                    opacity: 0;
+                    transform: translate(0%, -5%);
+                }
             }
 
             button{

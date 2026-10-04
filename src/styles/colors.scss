@@ -36,6 +36,7 @@
     --modal-background-color: #3f504354;
     --invert-percentage: 100%;
     --error-color-full: #ff4d4d;
+    --scrollbar-color: var(--secondary-color) #1a1a1a;
 }
 
 [data-theme="light"] {
@@ -55,4 +56,5 @@
     --modal-background-color: #c7e7cec2;
     --invert-percentage: 0%;
     --error-color-full: #912020;
+    --scrollbar-color: var(--secondary-color) #eeeeee;
 }
