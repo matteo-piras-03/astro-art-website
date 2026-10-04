@@ -153,15 +153,15 @@
 #modal-view{
     opacity: 0;
     display: none;
-    transition: opacity 0.25s ease,
-                display 0.25s allow-discrete;
+    transition: opacity 0.5s ease,
+                display 0.5s allow-discrete;
     position: fixed;
     top: 0px;
     left: 0px;
     height: 100%;
     width: 100%;
     background-color: var(--modal-external-background-color);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);            
 
     z-index: 2;
     margin: 0px;
@@ -187,11 +187,15 @@
         display: block;
         opacity: 0;
         pointer-events: none;
+        #modal-view-sub{
+            transform: translate(-50%, -47%);
+        }
     }
 
     #modal-view-sub{
         position: relative;
         transform: translate(-50%, -50%);
+        transition: transform 0.75s ease;
         top: 50%;
         left: 50%;
         width: calc(min(90%, 72rem));

@@ -32,7 +32,7 @@ export default function CollectionContent({ drawings, collection }) {
           <a key={drawing.id} href={returnDrawingSrc(collection, drawing.id)} className="drawing-card" onClick={(e) => { e.preventDefault(); setModal({ src: returnDrawingSrc(collection, drawing.id), visible: true }); }}>
             
             <img src={returnDrawingSrc(collection, drawing.id)} alt={drawing.title} />
-            <div className="title-date"><h1>{drawing.title}</h1><h2 className="date">{formatDate(drawing.date, true)}</h2></div>
+            <div className="title-date"><h1>{drawing.title}</h1><span className="date">{formatDate(drawing.date, true)}</span></div>
             <p>{drawing.caption}</p>
             
           </a>

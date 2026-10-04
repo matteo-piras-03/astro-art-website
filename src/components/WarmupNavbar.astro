@@ -1,0 +1,24 @@
+---
+interface Props{
+    active?: string;
+}
+
+import "../styles/common_warmups_settings.scss";
+
+const { active } = Astro.props as Props;
+---
+
+<a
+    href="/warmups"
+    class=`${active === 'warmups' ? "active" : ""} nav-link`
+    data-astro-prefetch
+>
+    Generator
+</a>
+<a
+    href="/warmups/settings"
+    class=`${active === 'settings' ? "active" : ""} nav-link`
+    data-astro-prefetch
+>
+    Exercises & Settings
+</a>

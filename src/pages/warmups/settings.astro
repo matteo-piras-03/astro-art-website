@@ -1,0 +1,18 @@
+---
+import Seo from '../../components/Seo.astro';
+import Layout from '../../layouts/warmup_pages.astro';
+import Settings from '../../components/Settings.jsx';
+const MEDIA_SUBDOMAIN = import.meta.env.PUBLIC_MEDIA_DOMAIN;
+const DOMAIN = import.meta.env.SITE;
+---
+
+<Seo slot="head" 
+	url={DOMAIN + Astro.url.pathname}
+	pagetitle="Warmup Generator Settings - pirAs03"
+	title="pirAs03 - Warmup Generator Settings"
+	description="A simple warmup drawing exercises generator complete with timer, instructions and score system, fully customizable by the user."
+	image={MEDIA_SUBDOMAIN + "/image/asset/previews/settings.jpg"}
+/>
+<Layout warmupactive="settings">
+    <Settings client:load/>
+</Layout>

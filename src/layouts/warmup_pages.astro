@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/main_pages.astro';
+import WarmupNavbar from '../components/WarmupNavbar.astro';
+
+interface Props {
+    warmupactive?: string;
+}
+
+const { warmupactive } = Astro.props as Props;
+---
+
+<slot name="head" />
+<Layout active="warmups">
+	<h1 class="title">Warmup Generator</h1>
+	<div id="section-0">
+		<WarmupNavbar active={warmupactive}/>
+	</div>
+    <slot />
+</Layout>
+
+<style>
+	.title {
+		color: var(--primary-color);
+		font-size: 2rem;
+		font-optical-sizing: auto;
+		font-weight: 900;
+		font-style: normal;
+		margin: 40px 0px 30px 10px;
+
+		@media (max-width: 1280px) {
+			width: 90%;
+			margin: 40px auto 30px auto;
+		}
+
+		@media (max-width: 960px) {
+			font-size: 2.5rem;
+			text-align: center;
+		}
+	}
+</style>
