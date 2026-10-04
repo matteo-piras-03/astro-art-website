@@ -26,14 +26,6 @@ import { Font } from "astro:assets";
 		<div id="root">
 			<slot />
 		</div>
+		<slot name="modal" />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

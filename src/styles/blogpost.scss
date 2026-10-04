@@ -15,6 +15,9 @@
         &:hover {
             background-color: var(--a-background-color);
             color: var(--primary-color);
+            span {
+                color: var(--primary-color);
+            }
         }
 
         img {
@@ -23,6 +26,7 @@
             height: 1rem;
         }
         span {
+            transition: color 0.3s ease;
             color: var(--secondary-color);
         }
     }

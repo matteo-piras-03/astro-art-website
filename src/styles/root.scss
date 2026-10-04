@@ -4,14 +4,19 @@
     box-sizing: border-box;
 }
 
+html, body{
+    margin: 0px;
+    padding: 0px;
+}
+
 html {
     width: 100%;
-    height: 100%;
+    
 }
 
 body {
-    margin: 0px;
-    padding: 0px;
+    width: 100%;
+    height: 100%;
     background: var(--background-gradient);
     background-repeat: no-repeat;
     background-size: cover;
@@ -30,6 +35,7 @@ body {
 
 .body-noscroll{
     overflow: hidden;
+    overflow-y: scroll;
 }
 
 #main{

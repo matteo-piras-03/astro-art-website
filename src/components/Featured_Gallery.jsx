@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 const MEDIA_SUBDOMAIN = "https://media.piras03.com";
 
 const img_list = [
@@ -17,13 +18,19 @@ const img_list = [
     MEDIA_SUBDOMAIN + "/image/dabcelebration/02.jpg"
 ];
 
-function Featured_Gallery() {
+export function Featured_Gallery() {
     const [modalInfo, setModal] = useState({ src: null, visible: false });
 
     useEffect(() => {
+        const htmlElement = document.documentElement;
+        const hasVerticalScrollbar = htmlElement.scrollHeight > htmlElement.clientHeight;
+
         document.body.style.overflow = modalInfo.visible ? "hidden" : "auto";
+        htmlElement.style.scrollbarGutter = modalInfo.visible && hasVerticalScrollbar ? "stable" : "auto";
+
         return () => {
             document.body.style.overflow = "auto";
+            htmlElement.style.scrollbarGutter = "auto";
         };
     }, [modalInfo.visible]);
 
@@ -36,15 +43,32 @@ function Featured_Gallery() {
                     </a>
                 </li>)}
             </ul>
-            <div
-                id="modal-view"
-                className={modalInfo.visible ? "visible" : ""}
-                onClick={() => setModal((previousState) => ({ ...previousState, visible: false }))}
-            >
-                <img src={modalInfo.src} alt=""/>
-            </div>
+            <Gallery_Modal modalInfo={modalInfo} setModal={setModal} />
         </>
     );
 }
 
-export default Featured_Gallery;
+export function Gallery_Modal({ modalInfo, setModal }) {
+    const [bodyElement, setBodyElement] = useState(null);
+
+    useEffect(() => {
+        setBodyElement(document.body);
+    }, []);
+
+    if (!bodyElement) {
+        return null;
+    }
+
+    return(
+        createPortal(
+            <div
+                id="modal-view"
+                className={`${modalInfo.visible ? "visible" : ""}`}
+                onClick={() => setModal((previousState) => ({ ...previousState, visible: false }))}
+            >
+                <img src={modalInfo.src} alt=""/>
+            </div>,
+            bodyElement
+        )
+    );
+}

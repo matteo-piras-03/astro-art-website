@@ -1,0 +1,173 @@
+.dropdown-menu{
+        position: relative;
+        width: 16rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0.5rem;
+
+        .textcontent{
+            font-size: 1rem;
+            color: var(--secondary-color);
+            margin: 0px 0px;
+            pointer-events: none;
+        }
+
+        button{
+            transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+            border: 1px solid;
+            border-color: var(--light-border-color);
+            border-radius: 0.25rem;
+            color: var(--primary-color);
+            background-color: var(--invisible-color);
+            font-size: 1rem;
+            padding: 0.5rem;
+            width: 100%;
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            &:hover{
+                color: var(--accent-color);
+                text-decoration: none;
+                border-color: var(--selected-color-full);
+                background-color: var(--background-color);
+            }
+
+            img{
+                height: 1rem;
+                transition: transform 0.2s ease;
+                filter: invert(var(--invert-percentage));
+                margin: 0px;
+
+                &.flipped{
+                    transform: rotate(180deg);
+                }
+            }
+
+            span{
+                color: var(--primary-color);
+                transition: color 0.3s ease;
+            }
+        }
+
+        .menu{
+            position: absolute;
+            display: none;
+            top: 100%;
+            left: 0px;
+            padding: 0px;
+            border: 1px solid;
+            border-color: var(--light-border-color);
+            border-radius: 0.25rem;
+            color: var(--primary-color);
+            background-color: var(--menu-color);
+            z-index: 5;
+            width: 100%;
+
+            &.open{
+                display: block;
+            }
+
+            button{
+                transition: color 0s ease, background-color 0s ease, border-color 0s ease;
+                font-size: 0.9em;
+                display: flex;
+                justify-content: flex-start;
+                gap: 0.5rem;
+                align-items: center;
+                border-top-width: 0px;
+                border-left-width: 0px;
+                border-right-width: 0px;
+                border-bottom-width: 1px;
+                border-radius: 0px;
+
+                &:hover{
+                    border-color: var(--light-border-color);
+                }
+
+                &.selected div{
+                    background-color: var(--selected-color-full);
+                }
+
+                &.last{
+                    font-size: 0.8em;
+                    border-bottom-width: 0px;
+
+                    &.disabled{
+                        cursor: default;
+                        &:hover{
+                            background-color: transparent;
+                        }
+                        span{
+                            color: var(--secondary-color);
+                        }
+                    }
+                    
+                }
+
+                &.last-no-clear{
+                    border-bottom-width: 0px;
+                }
+
+                div{
+                    display: block;
+                    border-radius: 25%;
+                    background-color: var(--a-background-color);
+                    padding: 0px;
+                    margin: 0px;
+                    width: 0.9rem;
+                    height: 0.9rem;
+                    transition: background-color 0.3s ease;
+                }
+
+                &.radio{
+                    div{
+                        border-radius: 50%;
+                    }
+
+                    &.selected{
+                        div{
+                            background-color: var(--selected-color-full);
+                        }
+                    }
+                }
+            }
+            
+            div{
+                width: auto;
+                display: block;
+            }
+        }
+    }
+
+@media (max-width:960px){
+    .dropdown-menu{
+            width: 90%;
+
+            .textcontent{
+                font-size: 1.25rem;
+            }
+
+            button{
+                font-size: 1.25rem;
+            }
+
+            .menu{
+                width: 100%;
+
+                button{
+                    font-size: 1.25em;
+                    &.last{
+                        font-size: 1em;
+                    }
+                }
+
+            }
+        }
+}

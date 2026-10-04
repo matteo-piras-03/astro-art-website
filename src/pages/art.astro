@@ -1,6 +1,8 @@
 ---
 import Seo from '../components/Seo.astro';
 import Layout from '../layouts/main_pages.astro';
+import GalleryPage from '../components/GalleryPage.jsx';
+
 const MEDIA_SUBDOMAIN = import.meta.env.PUBLIC_MEDIA_DOMAIN;
 const DOMAIN = import.meta.env.SITE;
 ---
@@ -13,5 +15,27 @@ const DOMAIN = import.meta.env.SITE;
 	image={MEDIA_SUBDOMAIN + "/image/asset/previews/art.jpg"}
 />
 <Layout active="art">
-	<h1>Art</h1>
+	<h1 class="title">Art Gallery</h1>
+	<GalleryPage client:load/>
 </Layout>
+
+<style>
+	.title {
+		color: var(--primary-color);
+		font-size: 2rem;
+		font-optical-sizing: auto;
+		font-weight: 900;
+		font-style: normal;
+		margin: 40px 0px 30px 10px;
+
+		@media (max-width: 1280px) {
+			width: 90%;
+			margin: 40px auto 30px auto;
+		}
+
+		@media (max-width: 960px) {
+			font-size: 2.5rem;
+			text-align: center;
+		}
+	}
+</style>

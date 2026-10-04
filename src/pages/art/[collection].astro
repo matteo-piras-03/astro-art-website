@@ -1,0 +1,94 @@
+---
+import Seo from "../../components/Seo.astro";
+import Layout from "../../layouts/main_pages.astro";
+import CollectionContent from "../../components/CollectionContent.jsx";
+import "../../styles/collection.scss";
+import leftChevron from "../../assets/svg/chevron-left-svgrepo-com.svg?url";
+const DOMAIN = import.meta.env.SITE;
+const MEDIA_SUBDOMAIN = import.meta.env.PUBLIC_MEDIA_DOMAIN;
+
+interface CollectionData {
+  "thumbnail-id": string;
+  "title": string;
+  "date": string;
+  "tags": string[];
+  "mediums": string[];
+  "drawings": Drawing[];
+}
+
+interface Drawing {
+  "id": string;
+  "title": string;
+  "date": string;
+  "caption": string;
+}
+
+export function getStaticPaths() {
+    const collectionModules = /** @type {Record<string, CollectionData>} */ (
+      import.meta.glob("../../assets/json/collection_list/*.json", { eager: true, import: "default" })
+    );
+    const artGalleryPaths = Object.entries(collectionModules);
+
+    
+  return [
+
+    ...artGalleryPaths.map(([filePath, collectionData]) => {
+      const fileName = filePath.split("/").pop() ?? "";
+      const collection = fileName.replace(/\.json$/, "");
+      
+      return {
+        params: { collection },
+        props: { collectionData },
+      };
+    })
+  ];
+}
+
+const { collection } = Astro.params;
+const collectionData = Astro.props.collectionData as CollectionData;
+
+function formatDate(dateString: string, short: boolean = false): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: short ? "short" : "long",
+    day: "numeric",
+  });
+}
+
+
+
+---
+<Seo slot="head" 
+	url={DOMAIN + Astro.url.pathname}
+	pagetitle=`${collectionData.title} - pirAs03`
+	title=`pirAs03 - ${collectionData.title}`
+	description="A collection of artworks from pirAs03's gallery."
+  image={MEDIA_SUBDOMAIN + "/image/" + collection + "/" + collectionData["thumbnail-id"] + ".jpg"}
+/>
+<Layout active="art">
+    <div id="section-0">
+      <a href="/art" id="back-button">
+        <img src={leftChevron} alt="Back" />
+        <span>Back to Art</span>
+      </a>
+      <h1 class="title">{collectionData.title}</h1>
+      <h2 class="date">{formatDate(collectionData.date)}</h2>
+      <div class="medium-tags">
+        {collectionData.mediums.map((medium) => (
+            <span>{medium}</span>
+        ))}
+        {collectionData.tags.map((tag) => (
+            <span>{tag}</span>
+        ))}
+      </div>
+    </div>
+    <div id="section-1">
+      <CollectionContent drawings={collectionData.drawings} collection={collection} client:load/>
+    </div>
+</Layout>
+
+<script>
+  const previousURL = history.state?.prevURL || "";
+  console.log("Previous URL:", previousURL);
+</script>

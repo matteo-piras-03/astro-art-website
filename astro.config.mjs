@@ -45,5 +45,7 @@ export default defineConfig({
   }
   ],
   site: "https://piras03.com",
-  prefetch: true
+  prefetch: {
+    prefetchAll: false
+  }
 });
