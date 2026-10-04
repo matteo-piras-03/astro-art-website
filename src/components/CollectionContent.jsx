@@ -16,14 +16,21 @@ function returnDrawingSrc(collection, drawingId) {
 
 export default function CollectionContent({ drawings, collection }) {
     const [modalInfo, setModal] = useState({ src: null, visible: false });
-    
 
     useEffect(() => {
+        const htmlElement = document.documentElement;
+        const hasVerticalScrollbar = htmlElement.scrollHeight > htmlElement.clientHeight;
+
         document.body.style.overflow = modalInfo.visible ? "hidden" : "auto";
-        document.querySelector("html").style.scrollbarGutter = modalInfo.visible ? "stable" : "auto";
+        if(hasVerticalScrollbar){
+            const bodyBackgroundColor = htmlElement.getAttribute("data-theme") === "dark" ? "#07070a" : "#3a3c43";
+            document.body.style.setProperty("--body-background-color", modalInfo.visible ? bodyBackgroundColor : "");
+            htmlElement.style.scrollbarGutter = modalInfo.visible ? "stable" : "auto";
+        }
+
         return () => {
             document.body.style.overflow = "auto";
-            document.querySelector("html").style.scrollbarGutter = "auto";
+            htmlElement.style.scrollbarGutter = "auto";
         };
     }, [modalInfo.visible]);
     return (

@@ -26,7 +26,11 @@ export function Featured_Gallery() {
         const hasVerticalScrollbar = htmlElement.scrollHeight > htmlElement.clientHeight;
 
         document.body.style.overflow = modalInfo.visible ? "hidden" : "auto";
-        htmlElement.style.scrollbarGutter = modalInfo.visible && hasVerticalScrollbar ? "stable" : "auto";
+        if(hasVerticalScrollbar){
+            const bodyBackgroundColor = htmlElement.getAttribute("data-theme") === "dark" ? "#07070a" : "#3a3c43";
+            document.body.style.setProperty("--body-background-color", modalInfo.visible ? bodyBackgroundColor : "");
+            htmlElement.style.scrollbarGutter = modalInfo.visible ? "stable" : "auto";
+        }
 
         return () => {
             document.body.style.overflow = "auto";

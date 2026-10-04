@@ -261,9 +261,15 @@ function CollectionModal({ modalInfo, setModal }) {
     }, []);
 
     useEffect(() => {
+        const htmlElement = document.documentElement;
+        const hasVerticalScrollbar = htmlElement.scrollHeight > htmlElement.clientHeight;
         if (bodyElement) {
             bodyElement.style.overflow = modalInfo.visible ? "hidden" : "auto";
-            document.querySelector("html").style.scrollbarGutter = modalInfo.visible ? "stable" : "auto";
+            if(hasVerticalScrollbar){
+                const bodyBackgroundColor = htmlElement.getAttribute("data-theme") === "dark" ? "#07070a" : "#3a3c43";
+                bodyElement.style.setProperty("--body-background-color", modalInfo.visible ? bodyBackgroundColor : "");
+                htmlElement.style.scrollbarGutter = modalInfo.visible ? "stable" : "auto";
+            }
         }
     }, [bodyElement, modalInfo.visible]);
 
