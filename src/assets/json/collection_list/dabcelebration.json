@@ -1,8 +1,8 @@
 {
     "handle": "dabcelebration",
-    "date": "2026-08-29",
+    "date": "2026-10-21",
     "title": "Drawabox Celebrational Drawings",
-    "thumbnail-id": "01",
+    "thumbnail-id": "06",
     "tags": ["Drawabox"],
     "mediums": ["Digital"],
     "drawings": [
@@ -35,6 +35,12 @@
             "title": "Twilight Blurple",
             "date": "2026-08-29",
             "caption": "Celebration of the completion of Lesson 5."
+        },
+        {
+            "id": "06",
+            "title": "Pipe Maze",
+            "date": "2026-10-21",
+            "caption": "Celebration of the completion of the 250 cylinder challenge."
         }
     ]
 }

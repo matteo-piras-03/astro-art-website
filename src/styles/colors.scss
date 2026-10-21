@@ -1,16 +1,16 @@
 :root{
-    --modal-external-background-color: rgba(0, 0, 0, 0.7);
+    --modal-external-background-color: #000000b3;
 
     --primary-color: #f5f5f5;
     --secondary-color: #aaaaaa;
-    --background-color: rgba(255, 255, 255, 0.05);
-    --a-background-color: rgba(255, 255, 255, 0.2);
+    --background-color: #ffffff0d;
+    --a-background-color: #ffffff33;
     --accent-color: #ffffff;
     --selected-color: #32af628c;
     --selected-color-full: #32af62;
     --border-color: #dcdcdc;
-    --light-border-color: rgba(255, 255, 255, 0.1);
-    --invisible-color: rgba(255, 255, 255, 0.0);
+    --light-border-color: #ffffff1a;
+    --invisible-color: #ffffff00;
     --menu-color: #28342a;
     --background-gradient: linear-gradient(to bottom, #1c291f, #171920);
     --body-background-color: #171920;
@@ -22,14 +22,14 @@
 [data-theme="dark"] {
     --primary-color: #f5f5f5;
     --secondary-color: #aaaaaa;
-    --background-color: rgba(255, 255, 255, 0.05);
-    --a-background-color: rgba(255, 255, 255, 0.2);
+    --background-color: #ffffff0d;
+    --a-background-color: #ffffff33;
     --accent-color: #ffffff;
     --selected-color: #32af628c;
     --selected-color-full: #32af62;
     --border-color: #dcdcdc;
-    --light-border-color: rgba(255, 255, 255, 0.1);
-    --invisible-color: rgba(255, 255, 255, 0.0);
+    --light-border-color: #ffffff1a;
+    --invisible-color: #ffffff00;
     --menu-color: #28342a;
     --background-gradient: linear-gradient(to bottom, #1c291f, #171920);
     --body-background-color: #171920;
@@ -42,14 +42,14 @@
 [data-theme="light"] {
     --primary-color: #000000;
     --secondary-color: #464646;
-    --background-color: rgba(255, 255, 255, 0.3);
-    --a-background-color: rgba(0, 0, 0, 0.2);
+    --background-color: #ffffff4d;
+    --a-background-color: #00000033;
     --accent-color: #000000;
     --selected-color: #32af628c;
     --selected-color-full: #2b9955;
     --border-color: #222222;
-    --light-border-color: rgba(0, 0, 0, 0.2);
-    --invisible-color: rgba(255, 255, 255, 0.0);
+    --light-border-color: #00000033;
+    --invisible-color: #ffffff00;
     --menu-color: #d8eedd;
     --background-gradient: linear-gradient(to bottom, #c7e7ce, #c2c8e2);
     --body-background-color: #c2c8e2;

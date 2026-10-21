@@ -3,19 +3,20 @@ import { createPortal } from "react-dom";
 const MEDIA_SUBDOMAIN = "https://media.piras03.com";
 
 const img_list = [
+    MEDIA_SUBDOMAIN + "/image/dabcelebration/06.jpg",
+    MEDIA_SUBDOMAIN + "/image/dab2026autumnprompt/05.jpg",
     MEDIA_SUBDOMAIN + "/image/dabcelebration/04.jpg",
     MEDIA_SUBDOMAIN + "/image/af2026/09.jpg",
     MEDIA_SUBDOMAIN + "/image/af2026/07.jpg",
     MEDIA_SUBDOMAIN + "/image/dabcelebration/05.jpg",
     MEDIA_SUBDOMAIN + "/image/digitalvol2/07.jpg",
-    MEDIA_SUBDOMAIN + "/image/af2026/03.jpg",
-    MEDIA_SUBDOMAIN + "/image/af2026/04.jpg",
+    MEDIA_SUBDOMAIN + "/image/dab2026autumnprompt/07.jpg",
     MEDIA_SUBDOMAIN + "/image/af2026/01.jpg",
     MEDIA_SUBDOMAIN + "/image/dabcelebration/03.jpg",
     MEDIA_SUBDOMAIN + "/image/digitalvol2/08.jpg",
     MEDIA_SUBDOMAIN + "/image/digitalvol2/02.jpg",
     MEDIA_SUBDOMAIN + "/image/digitalvol2/06.jpg",
-    MEDIA_SUBDOMAIN + "/image/dabcelebration/02.jpg"
+    MEDIA_SUBDOMAIN + "/image/dab2026autumnprompt/01.jpg"
 ];
 
 export function Featured_Gallery() {

@@ -67,6 +67,13 @@ function saveExercisetoLocalStorage(key, range, isSelected, isCustomExercise, op
     const storedRecords = getStoredInnerButtonRecords();
     const index = storedRecords.findIndex(record => record.key === key);
     if ((index == -1) && (operation !== "addCustom")) {
+        const allExercisesArray = allExercises.flatMap(group => group.subgroups.flatMap(subgroup => subgroup.exercises.map(exercise => exercise.label)));
+        if (allExercisesArray.includes(key)) {
+            storedRecords.push({ key, range: 1, selected: true, isCustomExercise });
+            localStorage.setItem("inner-button-selections", JSON.stringify(storedRecords));
+            return true;
+        }
+        console.warn(`Exercise "${key}" not found in allExercises. Cannot perform operation "${operation}".`);
         return false;
     }
     const previousRange = storedRecords[index] ? storedRecords[index].range : 1;
