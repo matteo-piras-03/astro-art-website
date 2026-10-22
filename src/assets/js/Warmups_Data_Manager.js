@@ -28,7 +28,19 @@ function getStoredInnerButtonRecords() {
             saveDefaultExercisesToLocalStorage(true);
             return getDefaultExerciseRecords();
         }
-
+        const allExercisesArray = allExercises.flatMap(group => group.subgroups.flatMap(subgroup => subgroup.exercises.map(exercise => exercise.label)));
+        const missingExercises = allExercisesArray.filter(exercise => !normalizedRecords.some(record => record.key === exercise));
+        if (missingExercises.length > 0) {
+            console.log("Missing exercises:", missingExercises);
+            const missingRecords = missingExercises.map(exercise => ({
+                key: exercise,
+                range: 1,
+                selected: false,
+                isCustomExercise: false
+            }));
+            normalizedRecords.push(...missingRecords);
+            localStorage.setItem("inner-button-selections", JSON.stringify(normalizedRecords));
+        }
         return normalizedRecords;
         
     } catch (error) {
@@ -55,7 +67,6 @@ function getStoredCustomExercises() {
         if (!Array.isArray(storedRecords)) {
             return [];
         }
-
         return storedRecords;
         
     } catch (error) {
