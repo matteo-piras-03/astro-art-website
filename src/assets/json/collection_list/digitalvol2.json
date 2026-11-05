@@ -1,8 +1,8 @@
 {
     "handle": "digitalvol2",
-    "date": "2026-09-21",
+    "date": "2026-10-30",
     "title": "Digital Drawings Vol.2",
-    "thumbnail-id": "06",
+    "thumbnail-id": "09",
     "tags": [],
     "mediums": ["Digital"],
     "drawings": [
@@ -53,6 +53,12 @@
             "title": "Escaping the matrix",
             "date": "2026-09-21",
             "caption": "Done this for fun."
+        },
+        {
+            "id": "09",
+            "title": "The king of patience",
+            "date": "2026-10-30",
+            "caption": "I made this to celebrate one year of drawing for at least an hour everyday. The improvement got just by trial and error is astonishing..."
         }
     ]
 }

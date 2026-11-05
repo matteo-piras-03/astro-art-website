@@ -248,6 +248,11 @@ function CarouselLogic(state, action) {
                 ...state,
                 currentIndex: (state.currentIndex - 1 + totalDrawings) % totalDrawings
             };
+        case "goTo":
+            return {
+                ...state,
+                currentIndex: action.index % totalDrawings
+            };
         default:
             return state;
     }
@@ -350,6 +355,12 @@ function CollectionCarousel({ collection, visible, styles }){
             <button type="button" className={styles["right"]} aria-label="Next image" onClick={() => setCState("next")}>
                 <img src={rightChevron} alt="Next"/>
             </button>
+            <ul className={styles["indicators"]}>
+                {cState.drawings.map((drawing, index) => (
+                    <button key={index} type="button" aria-label={`Go to image ${index + 1}`} onClick={() => setCState({ type: "goTo", index })} className={`${styles["indicator"]} ${index === cState.currentIndex ? styles["active"] : ""}`}>
+                    </button>
+                ))}
+            </ul>
         </div>
         <div className={styles["drawing-info"]}>
             <div className={styles["title-date"]}>

@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 const MEDIA_SUBDOMAIN = "https://media.piras03.com";
 
 const img_list = [
+    MEDIA_SUBDOMAIN + "/image/digitalvol2/09.jpg",
     MEDIA_SUBDOMAIN + "/image/dabcelebration/06.jpg",
     MEDIA_SUBDOMAIN + "/image/dab2026autumnprompt/05.jpg",
     MEDIA_SUBDOMAIN + "/image/dabcelebration/04.jpg",

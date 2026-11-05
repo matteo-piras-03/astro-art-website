@@ -1,8 +1,8 @@
 {
     "handle": "felttipvol1",
-    "date": "2026-06-03",
+    "date": "2026-10-23",
     "title": "Fineliner Drawings Vol.1",
-    "thumbnail-id": "01",
+    "thumbnail-id": "02",
     "tags": [],
     "mediums": ["Felt tip Pen"],
     "drawings": [
@@ -11,6 +11,12 @@
             "title": "Crow Ninja",
             "date": "2026-06-03",
             "caption": "Still exploring this crow ninja idea."
+        },
+        {
+            "id": "02",
+            "title": "Torger and Orson",
+            "date": "2026-10-23",
+            "caption": "This is a birthday gift for a friend."
         }
     ]
 }
